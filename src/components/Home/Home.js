@@ -9,9 +9,14 @@ import Nav from "react-bootstrap/Nav";
 import Type from "./Type";
 import Form from "../Form/form"
 import { Link } from "react-router-dom";
-
-import Pdfgenraort from  "../Pdfgenarot/Pdfgenator"
+import Pdfgenraort from "../Pdfgenarot/Pdfgenator"
 import Fade from "../Corousl"
+import { Formdetali } from "../../Constant/constan"
+
+
+
+
+
 function Home() {
 
   const Print = () => {
@@ -57,49 +62,43 @@ function Home() {
       {/* <Home2 /> */}
       {/* <Form /> */}
       <div className="cardbox banner">
-        <div class="card banner" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <Nav.Link
-                as={Link}
-                to={{
-                  pathname: "/Form",
-                  search: "?data=2",
-                }}
-               style={{padding:"0px"}}
+        {Object.keys(Formdetali).map((x) => {
+          const object = Formdetali[x]
+          return (
+            <div class="card banner" style={{ width: "18rem" }}>
+
+              <div class="card-body">
+                <img src="..." class="card-img-top" alt="..." />
+                <h5 class="card-title">{object.Title}</h5>
+                <p class="card-text">{object.detailtext}</p>
+                <Nav.Link
+                  as={Link}
+                  to={{
+                    pathname: "/Form",
+                    search: `?data=${x}`,
+                  }}
+                  style={{ padding: "0px" }}
                 // onClick={() => updateExpanded(false)}
-              >
-              
-              
-                <a  class="btn btn-primary" style={{}}>  Fill the form</a>
-              </Nav.Link>
-            
+                >
+                  <a class="btn btn-primary" style={{}}> Apply Now</a>
+                </Nav.Link>
+
+              </div>
             </div>
-        </div>
-        <div>
-        <div class="card banner" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Apply Now</a>
-            </div>
-        </div>
+          )
+        })
+
+        }
+       
       </div>
       <div>
-        <div class="card banner" style={{width: "18rem"}}>
-          <img src="..." class="card-img-top" alt="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+
       </div>
+      <div>
+
       </div>
-      
+
+
     </section>
   );
 }
