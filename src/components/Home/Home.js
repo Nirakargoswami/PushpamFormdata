@@ -4,7 +4,7 @@ import homeLogo from "../../Assets/home-main.svg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Button from "react-bootstrap/Button";
-
+import Paynow from "../Paypayment/Pay"
 import Nav from "react-bootstrap/Nav";
 import Type from "./Type";
 import Form from "../Form/form"
@@ -61,6 +61,8 @@ function Home() {
       </Container>
       {/* <Home2 /> */}
       {/* <Form /> */}
+
+      <Paynow/>
       <div className="cardbox banner">
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]
@@ -94,7 +96,10 @@ function Home() {
       <div>
 
       </div>
+    
       <div>
+
+       
 
       </div>
 
