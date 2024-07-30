@@ -66,7 +66,7 @@ function Paynow() {
       cashfree.checkout(checkoutOptions).then((res) => {
         console.log("payment initialized")
 
-        verifyPayment(orderId)
+        verifyPayment()
       })
 
 

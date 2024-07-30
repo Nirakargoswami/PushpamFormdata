@@ -74,7 +74,9 @@ function generateUniqueUserID(name) {
 
   return id;
 }
-const Creatuser = async ( formData) => {
+const Creatuser = async ( formDatas) => {
+
+  const formData = formDatas.userdata
 
   console.log(formData, formData)
   console.log(formData.name)
@@ -83,32 +85,74 @@ const Creatuser = async ( formData) => {
     const Id = generateUniqueUserID(formData.name)
     console.log(Id,formData)
 
-    const docRef = await addDoc(collection(db, "PushpamUsers"), {
+     await addDoc(collection(db, formDatas.key), {
+      formType:formDatas.key,
       id: Id,
-      name: formData.name ? formData.name : Id,
-      age:formData.age ,
-      email
-        :
-        formData.email,
-      gender
-        :
-        formData.gender,
-      income
-        :
-        formData.income,
-      name
-        :
-        formData.name,
+
+      user_data:formDatas,
+    
       phoneNumber
         : formData.phoneNumber
         ,
 
     })
+
+return true
     // console.log(docRef)
   }
 
-  // return true
 }
+
+async function searchUserByPhoneNumber(phoneNumber) {
+  console.log(phoneNumber)
+
+  try {
+    // Reference to the collection where documents are stored
+    const collectionRef = collection(db, "sanatry");
+
+    // Create a query against the collection
+    const q = query(collectionRef, where("phoneNumber", "==", phoneNumber));
+
+    // Execute the query and get the documents
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      console.log("No matching documents found.");
+      return null;
+    }
+
+    // Iterate through the documents and log the data
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+
+  } catch (e) {
+    console.error("Error searching documents: ", e);
+  }
+}
+// async function searchUserByPhoneNumberAcrossCollections(phoneNumber) {
+//   const collections = ["Bikerepair", "beauty", "mobilerepair", "sanatry"];
+//   try {
+//     for (const collectionName of collections) {
+//       const collectionRef = collection(db, collectionName);
+//       const q = query(collectionRef, where("phoneNumber", "==", phoneNumber));
+//       const querySnapshot = await getDocs(q);
+
+//       if (!querySnapshot.empty) {
+//         console.log(`Found in collection: ${collectionName}`);
+//         querySnapshot.forEach((doc) => {
+//           console.log(doc.id, " => ", doc.data());
+//         });
+//       } else {
+//         console.log(`No matching documents found in collection: ${collectionName}`);
+//       }
+//     }
+//   } catch (e) {
+//     console.error("Error searching documents: ", e);
+//   }
+// }
+
+
 window.addEventListener('message', (event) => {
   if (event.data === 'closePopup') {
     // Close the popup
@@ -685,6 +729,7 @@ export {
   sendPasswordReset,
   Signout,
   Savedata,
+  searchUserByPhoneNumber,  
   // Distrubutrcoin,
   // Getrankdata,
   onAuthStateChanged,

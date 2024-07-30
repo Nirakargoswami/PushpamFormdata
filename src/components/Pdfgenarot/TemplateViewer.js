@@ -1,20 +1,17 @@
 
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import Profile from "./Profile"
 import "react-image-crop/dist/ReactCrop.css";
 
 const TemplateViewer = ({ templateFile, userData }) => {
-  
+
     const [PDF, setPdf] = useState(null)
     const [Cropeiagmefile, setCropeimgefile,] = useState(null)
-    
-    
-  
 
     const downloadTemplate = async () => {
-      
+
         if (!templateFile) return;
         const existingPdfBytes = await templateFile.arrayBuffer();
 
@@ -27,7 +24,6 @@ const TemplateViewer = ({ templateFile, userData }) => {
 
         Object.keys(userData).forEach(key1 => {
             const X = 60
-
             console.log(`Key of the first object: ${key1}`);
             const title = `${key1}`
             firstPage.drawText(title, { x: X, y: Y, size: fontSize, font: helveticaFont, color: rgb(0, 0, 0) });
@@ -66,7 +62,7 @@ const TemplateViewer = ({ templateFile, userData }) => {
             width: width,
             height: height,
         });
-console.log("fasdfafa")
+        console.log("fasdfafa")
         const pdfBytes = await pdfDoc.save();
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
@@ -78,17 +74,17 @@ console.log("fasdfafa")
         a.click();
         URL.revokeObjectURL(url);
     };
-   
 
-//     width: 328px;
-//height: 464px;
+
+    //     width: 328px;
+    //height: 464px;
 
     return (
         <div>
             <h2>Preview Template:</h2>
             <Profile setCropeimgefile={setCropeimgefile} />
             <div>
-            <iframe controls={false} src={PDF} width={328} height={464} />
+                <iframe controls={false} src={PDF} width={328} height={464} />
             </div>
             <button onClick={downloadTemplate}>Download Template as PDF</button>
         </div>

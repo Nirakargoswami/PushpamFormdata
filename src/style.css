@@ -416,9 +416,9 @@ button:focus {
 .footer {
   background-color: rgb(10, 4, 22);
   bottom: 0 !important;
+  margin-top: 20px;
   padding-top: 10px !important;
   padding-bottom: 8px !important;
-  position: fixed;
 }
 
 .footer-copywright {
@@ -482,6 +482,7 @@ button:focus {
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
+  position: relative;
 }
 
 .project-card-view:hover {
@@ -822,7 +823,6 @@ button:focus {
 }
 
 .banner {
-  background: linear-gradient(135deg, #1976D2, #00BCD4);
   background-size: 200% 200%; /* Adjust based on your preference */
   animation: moveGradient 10s ease infinite; /* Adjust duration and timing function as needed */
 }
@@ -1619,4 +1619,25 @@ button:focus {
 .Paddi{
   margin-top: 20px;
 
+}
+
+.pdfbox{
+  position: relative;
+}
+
+.PDF{
+position: absolute;
+}
+
+.Inputs {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: start;
+  width: 100%;
+}
+
+.form-label {
+  margin-bottom: .5rem;
 }

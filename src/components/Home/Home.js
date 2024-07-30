@@ -48,10 +48,10 @@ function Home() {
               {/* <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
               </div> */}
-            </Col>
-            <button onClick={Print}>
-              asdfasdfa
-            </button>
+            </Col >
+            <h2 style={{ color: "black", textAlign: "center" }}>
+              Empowering women and Skill of men is the cornerstone of building resilient families, cohesive communities, and thriving nations
+            </h2>
 
 
           </Row>
@@ -62,7 +62,7 @@ function Home() {
       {/* <Home2 /> */}
       {/* <Form /> */}
 
-      <Paynow/>
+      <Paynow />
       <div className="cardbox banner">
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]
@@ -70,8 +70,8 @@ function Home() {
             <div class="card banner" style={{ width: "18rem" }}>
 
               <div class="card-body">
-                <img src="..." class="card-img-top" alt="..." />
-                <h5 class="card-title">{object.Title}</h5>
+                {object.imge && <img src={object.imge} class="card-img-top" alt="..." />
+                }                <h5 class="card-title">{object.Title}</h5>
                 <p class="card-text">{object.detailtext}</p>
                 <Nav.Link
                   as={Link}
@@ -91,15 +91,15 @@ function Home() {
         })
 
         }
-       
+
       </div>
       <div>
 
       </div>
-    
+
       <div>
 
-       
+
 
       </div>
 

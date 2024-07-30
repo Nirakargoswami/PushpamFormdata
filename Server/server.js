@@ -72,7 +72,6 @@ app.get('/payment', async (req, res) => {
 })
 
 app.post('/verify', async (req, res) => {
-
     try {
 
         let {
