@@ -1,30 +1,28 @@
 import { useState } from 'react'
 import axios from "axios"
-import {load} from '@cashfreepayments/cashfree-js'
+import { load } from '@cashfreepayments/cashfree-js'
 
 
 function Paynow() {
+  const [orderId, setOrderId] = useState("")
 
   let cashfree;
-
-  let insitialzeSDK = async function () {
-
+  var initializeSDK = async function () {
     cashfree = await load({
-      mode: "sandbox",
-    })
-  }
+      mode: "production"
+    });
+  };
+  initializeSDK();
 
-  insitialzeSDK()
 
-  const [orderId, setOrderId] = useState("")
 
 
 
   const getSessionId = async () => {
     try {
       let res = await axios.get("http://localhost:8000/payment")
-      
-      if(res.data && res.data.payment_session_id){
+
+      if (res.data && res.data.payment_session_id) {
 
         console.log(res.data)
         setOrderId(res.data.order_id)
@@ -39,12 +37,12 @@ function Paynow() {
 
   const verifyPayment = async () => {
     try {
-      
+
       let res = await axios.post("http://localhost:8000/verify", {
         orderId: orderId
       })
 
-      if(res && res.data){
+      if (res && res.data) {
         alert("payment verified")
       }
 
@@ -58,10 +56,15 @@ function Paynow() {
     try {
 
       let sessionId = await getSessionId()
+      
       let checkoutOptions = {
-        paymentSessionId : sessionId,
-        redirectTarget:"_modal",
-      }
+        paymentSessionId: sessionId,
+        redirectTarget: document.getElementById("cf_checkout"),
+        appearance: {
+            width: "425px",
+            height: "700px",
+        },
+    };
 
       cashfree.checkout(checkoutOptions).then((res) => {
         console.log("payment initialized")

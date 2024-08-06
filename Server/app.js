@@ -5,6 +5,7 @@ const {
     Cashfree
 } = require('cashfree-pg');
 
+const port = process.env.PORT || 8000; // default port is 3000
 
 require('dotenv').config();
 
@@ -19,7 +20,7 @@ app.use(express.urlencoded({
 
 Cashfree.XClientId = process.env.CLIENT_ID;
 Cashfree.XClientSecret = process.env.CLIENT_SECRET;
-Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
+Cashfree.XEnvironment = Cashfree.Environment.PRODUCTION;
 
 
 function generateOrderId() {
@@ -39,21 +40,37 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/payment', async (req, res) => {
-
+app.post('/payment', async (req, res) => {
+    let {
+        orderId,
+        customer_phone
+    } = req.body;
     try {
 
-        let request = {
+        // let request = {
+        //     "order_amount": 1,
+        //     "order_currency": "INR",
+        //     "order_id": await generateOrderId(),
+        //     "customer_details": {
+        //         "customer_id": orderId,
+        //          "customer_phone":customer_phone  
+        //     },
+        // }
+        let order_id =  await generateOrderId()
+        var request = {
             "order_amount": 1.00,
             "order_currency": "INR",
-            "order_id": await generateOrderId(),
+            "order_id": order_id,
             "customer_details": {
-                "customer_id": "webcodder01",
-                "customer_phone": "9999999999",
-                "customer_name": "Web Codder",
-                "customer_email": "webcodder@example.com"
+                "customer_id": orderId,
+                "customer_phone": customer_phone,
+              
             },
-        }
+            "order_meta": {
+                "return_url": `https://srimahalaxmi.org.in/order_id?${order_id}`,
+                "payment_methods": "cc,dc,upi"
+            }
+        };
 
         Cashfree.PGCreateOrder("2023-08-01", request).then(response => {
             console.log(response.data);
@@ -91,6 +108,6 @@ app.post('/verify', async (req, res) => {
     }
 })
 
-app.listen(8000, () => {
+app.listen(port, () => {
     console.log('Server is running on port 8000');
 })

@@ -49,7 +49,7 @@ function Home() {
                 <Type />
               </div> */}
             </Col >
-            <h2 style={{ color: "black", textAlign: "center" }}>
+            <h2 style={{ color: "black", textAlign: "center", fontWeight: "900" }}>
               Empowering women and Skill of men is the cornerstone of building resilient families, cohesive communities, and thriving nations
             </h2>
 
@@ -62,7 +62,12 @@ function Home() {
       {/* <Home2 /> */}
       {/* <Form /> */}
 
-      <Paynow />
+      {/* <Paynow /> */}
+      <div className="porjTitle">
+        <h2 style={{ color: "black", textAlign: "center", fontWeight: "500" }}>
+          Projects
+        </h2>
+      </div>
       <div className="cardbox banner">
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]

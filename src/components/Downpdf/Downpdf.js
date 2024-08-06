@@ -67,10 +67,10 @@ const Downloadpdf = ({ userData, Cropeiagmefile }) => {
     };
 
     return (
-        <>
+        <div className='maininput'>
             <button onClick={downloadTemplate}>Download Template as PDF</button>
             {PDF && <iframe src={PDF} width="100%" height="500px"></iframe>}
-        </>
+        </div>
     );
 };
 

@@ -18,8 +18,8 @@ function ControlledCarousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Educational Opportunities</h3>
+          <p>Educating a girl changes the world.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -29,8 +29,8 @@ function ControlledCarousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Economic Independence:</h3>
+          <p>Financial freedom is the key to self-reliance</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -40,9 +40,9 @@ function ControlledCarousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Social and Legal Rights</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          Empowerment begins with equality.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
