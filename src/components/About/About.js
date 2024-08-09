@@ -4,8 +4,10 @@ import Particle from "../Particle";
 import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
+import ABoutpdf from "../../Assets/REPORT.pdf"
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import { Document, Page } from 'react-pdf';
 
 function About() {
   return (
@@ -22,18 +24,47 @@ function About() {
             }}
           >
             <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Know Who <strong className="purple">I'M</strong>
+              MAHALAXMI  VIVIDHALAXI  VIKAS  ORGANIZATION એક NON GOVE.ORG. છે . તે છેલ્લા સાત વર્ષથી કામ છે તે શિક્ષણ , આરોગ્ય , ઓર્ગેનિક ખેતી , બાળ વિકાસ , સ્કિલ ડેવલોપમેન્ટ , રોજગારી , જીવન જરૂરિયાત પાયાની વસ્તુઓ , જરુરીયાત મંદ લોકોને સહાય  જેવા અનેક પ્રોજેકટ પર કામ કરે છે .
             </h1>
-            <Aboutcard />
+            ઉદ્દેશ :-
+            <h3 className="project-heading">
+              1.	ગામડાના લોકોને રોજગારી  મળી રહે .
+            </h3>
+            <h3 className="project-heading">
+              2.	જરુરીયાત મંદ બાળકોને સારું શિક્ષણ મળે તે માટે અભ્યાસ ની વસ્તુ પૂરી પાડવી              </h3>
+            <h3 className="project-heading">
+              3.	બાળકોને પૌષ્ટિક આહાર મળે .
+            </h3>
+            <h3 className="project-heading">
+              5.	ગામડાના લોકોને ગામમાં આરોગ્યની સુવિધા મળી રહે .
+            </h3>
+            <h3 className="project-heading">
+              6.	ઘર વપરાશ ની ચીજ વસ્તુઓ લોકોને મળી રહે.                  </h3>
+
+
+
+          
+          </Col>
+          
+          <Col>
+          <Document file={ABoutpdf} >
+            <Page pageNumber={1} />
+          </Document>
           </Col>
 
+         
+          
         </Row>
-        <h1 className="project-heading">
-          Professional <strong className="purple">Skillset </strong>
-        </h1>
-        <h1 className="project-heading">
-          <strong className="purple">Tools</strong> I use</h1>
+    
+      
+       
+       
+
+       
+
+
       </Container>
+
     </Container>
   );
 }

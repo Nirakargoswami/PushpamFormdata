@@ -6,6 +6,7 @@ import { BsGithub } from "react-icons/bs";
 import Modal from 'react-bootstrap/Modal';
 import { Document, Page } from 'react-pdf';
 import { useState } from "react"
+import DownloadButton from "./Doanload"
 function ProjectCards(props) {
   const [show, setShow] = useState(false);
   const [smShow, setSmShow] = useState(false);
@@ -24,6 +25,9 @@ function ProjectCards(props) {
           <Card.Text style={{ textAlign: "justify" }}>
             {props.description}
           </Card.Text>
+
+            <DownloadButton pdf={props.pdf} />
+      
           <Button onClick={() => handleShow()} variant="primary" href={props.ghLink} target="_blank">
 
             {props.isBlog ? "Projects details" : "GitHub"}
@@ -33,17 +37,17 @@ function ProjectCards(props) {
 
           {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
 
-          {/* {!props.isBlog && props.demoLink && (
-          <Button
-            variant="primary"
-            href={props.demoLink}
-            target="_blank"
-            style={{ marginLeft: "10px" }}
-          >
-            <CgWebsite /> &nbsp;
-            {"View"}
-          </Button>
-        )} */}
+          {!props.isBlog && props.demoLink && (
+            <Button
+              variant="primary"
+              href={props.demoLink}
+              target="_blank"
+              style={{ marginLeft: "10px" }}
+            >
+              <CgWebsite /> &nbsp;
+              {"View"}
+            </Button>
+          )}
         </Card.Body>
 
       </Card>
@@ -59,17 +63,17 @@ function ProjectCards(props) {
         </Modal.Header>
         <Modal.Body>
           <Document file={props.pdf} >
-          <Page pageNumber={1} />
-        </Document> 
+            <Page pageNumber={1} />
+          </Document>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-        
+
         </Modal.Footer>
       </Modal>
-     
+
 
     </div>
   );

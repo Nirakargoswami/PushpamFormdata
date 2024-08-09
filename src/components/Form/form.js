@@ -22,11 +22,11 @@ function Forms() {
     const [pay, setpay] = useState(false);
     const [no, setno] = useState();
     const location = useLocation();
+    const [orderId, setOrderId] = useState("cb7ece84e50a");
 
     const searchParams = new URLSearchParams(location.search);
     const data = searchParams.get("data");
 
-    const [orderId, setOrderId] = useState("");
     let cashfree;
 
     const insitialzeSDK = async function () {
@@ -76,6 +76,7 @@ function Forms() {
                     if (result.error) {
                         console.log("User has closed the popup or there is some payment error, Check for Payment Status");
                         console.log(result.error);
+                        
                     }
                     if (result.redirect) {
                         console.log("Payment will be redirected");
@@ -84,8 +85,9 @@ function Forms() {
 
                         console.log(result.paymentDetails);
                         console.log("Payment has been completed, Check for Payment Status");
-                        // handleSubmit(datanew);
                         console.log(result.paymentDetails.paymentMessage);
+                        verifyPayment(orderId)
+
                     }
                 });
 
@@ -155,11 +157,17 @@ function Forms() {
             console.log(error);
         }
     };
+    
+    console.log(orderId.replace(/^["'`]+|["'`]+$/g, ""),orderId)
 
-    const verifyPayment = async () => {
+    const verifyPayment = async (orderId) => {
+        console.log(`Verifying payment for orderId: ${orderId}`);
+
+        console.log(orderId.replace(/^["'`]+|["'`]+$/g, ""),orderId)
         try {
             let res = await axios.post("https://us-central1-pushpam-25b50.cloudfunctions.net/api/verify", {
-                orderId: orderId
+                orderId:orderId.replace(/^["'`]+|["'`]+$/g, "")
+
             });
 
             if (res && res.data) {
@@ -168,7 +176,7 @@ function Forms() {
                 console.log(datanew);
 
                 alert("payment verified");
-               
+                 handleSubmit(datanew);
             }
 
         } catch (error) {
@@ -179,7 +187,7 @@ function Forms() {
     const Phoeno = (e) => {
         setno(e.target.value);
     };
-
+   
     const ChecekFormdat = () => {
         console.log(error)
         if (checkForm()) {

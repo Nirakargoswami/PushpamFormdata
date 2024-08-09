@@ -13,7 +13,7 @@ import Pdfgenraort from "../Pdfgenarot/Pdfgenator"
 import Fade from "../Corousl"
 import { Formdetali } from "../../Constant/constan"
 
-
+import Bikerepair from "../../Assets/Beauty.jpg"
 
 
 
@@ -52,8 +52,6 @@ function Home() {
             <h2 style={{ color: "black", textAlign: "center", fontWeight: "900" }}>
               Empowering women and Skill of men is the cornerstone of building resilient families, cohesive communities, and thriving nations
             </h2>
-
-
           </Row>
 
         </Container>
@@ -69,6 +67,25 @@ function Home() {
         </h2>
       </div>
       <div className="cardbox banner">
+        <div class="card banner" style={{ width: "18rem" }}>
+          <div className="Bludrbox">
+          હાલમાં આ ફોર્મ ની અરજી લેવામાં આવી રહી નથી
+          </div>
+          <div style={{opacity:"0.7"}} class="card-body">
+            <img src={Bikerepair} class="card-img-top" alt="..." />
+            <h5 class="card-title">Motar revainding and light fetting</h5>
+            <p class="card-text">"ધણા યુવાનો જોડે સ્કિલ છે પણ ધંધો શરૂ કરવા માટે સાધનો હોતા નથી , આવા યુવાનો ને સાધનો પૂરા પાડવા જેથી પોતાનો રોજગાર મેળવી શકે . ધણા યુવાનો જોડે સ્કિલ છે એવાં યુવાનો  પ્રાઈવેટ જોબ કરવા માગે છે પણ સર્ટિફિકેટ ના હોવાના કારણે જોબ કરી શકતા નથી તો આવા યુવનાઓને સર્ટિફિકેટ અને સાધનોની  કીટ આપવી."</p>
+
+            <a class="btn btn-primary" style={{}}> Apply Now</a>
+
+
+          </div>
+        </div>
+        <div>
+
+       
+        </div>
+       
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]
           return (

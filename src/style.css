@@ -281,7 +281,7 @@ button:focus {
 }
 
 .heading {
-  font-size: 2.4em !important;
+  font-size:1.4em !important;
   padding-left: 50px !important;
 }
 
@@ -553,7 +553,7 @@ button:focus {
 
 .project-heading {
   color: white !important;
-  font-size: 2.3em !important;
+  font-size: 1.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
 }
@@ -776,6 +776,7 @@ button:focus {
 
 .card {
   margin-top: 2rem;
+  position: relative;
 }
 
 .BiddtaCArdboc {
@@ -812,7 +813,7 @@ button:focus {
   position: relative;
 }
 
-.Publicphot{
+.Publicphot {
   max-width: 100%;
   right: 389px;
   max-height: 145px;
@@ -823,17 +824,21 @@ button:focus {
 }
 
 .banner {
-  background-size: 200% 200%; /* Adjust based on your preference */
-  animation: moveGradient 10s ease infinite; /* Adjust duration and timing function as needed */
+  background-size: 200% 200%;
+  /* Adjust based on your preference */
+  animation: moveGradient 10s ease infinite;
+  /* Adjust duration and timing function as needed */
 }
 
 @keyframes moveGradient {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -1260,6 +1265,7 @@ button:focus {
   line-height: 20px;
   flex: 1 1 0%;
 }
+
 .main_div {
   background-color: rgb(43, 135, 209) !important;
   color: white;
@@ -1610,23 +1616,23 @@ button:focus {
   height: 39px;
 }
 
-.Extra{
+.Extra {
   padding: 0px 16px;
   width: 93%;
   height: 637px;
 }
 
-.Paddi{
+.Paddi {
   margin-top: 20px;
 
 }
 
-.pdfbox{
+.pdfbox {
   position: relative;
 }
 
-.PDF{
-position: absolute;
+.PDF {
+  position: absolute;
 }
 
 .Inputs {
@@ -1642,15 +1648,32 @@ position: absolute;
   margin-bottom: .5rem;
 }
 
-.maininput{
+.maininput {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.porjTitle{
- margin: 0px 4px 0px 4px;
+.porjTitle {
+  margin: 0px 4px 0px 4px;
   border: 2px solid rgb(197, 197, 197);
   border-radius: 10px;
+}
+
+.Bludrbox {
+  color: black;
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+    height: 250px;
+    width: 270px;
+    border: 1px solid lightgrey;
+    top: 163px;
+    left: 11px;
+    background: white;
+    z-index: 100;
 }

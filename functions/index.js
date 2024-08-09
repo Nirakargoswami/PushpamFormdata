@@ -63,7 +63,7 @@ app.post('/payment', async (req, res) => {
 app.post('/verify', async (req, res) => {
     try {
         let { orderId } = req.body;
-
+          console.log(orderId)
         Cashfree.PGOrderFetchPayments("2023-08-01", orderId).then((response) => {
             res.json(response.data);
         }).catch(error => {
