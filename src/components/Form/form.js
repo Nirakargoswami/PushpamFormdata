@@ -3,24 +3,26 @@ import { useLocation } from "react-router-dom";
 import { Fomdfata } from "../../Constant/constan";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from "axios"
-import { load } from '@cashfreepayments/cashfree-js'
+import axios from "axios";
+import { load } from '@cashfreepayments/cashfree-js';
 import { Creatuser, searchUserByPhoneNumber } from "../Firebse/firebse";
 import Downloadpdf from "../Downpdf/Downpdf";
 
 const Maindata = {
-    1: "sanatry",
-    2: "mobilerepair",
+    1: "Sanatary pad kit",
+    2: "Motar revainding and light fetting",
+    3: "Beauty Parlor Kit",
+    4: "Youva Svrojgar Yojna"
 };
 
 function Forms() {
     const [formData, setFormData] = useState({});
     const [error, setError] = useState('');
-    const [payment, setpayment] = useState(false);
-    const [image1, setimage1] = useState();
+    const [payment, setPayment] = useState(false);
+    const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
-    const [pay, setpay] = useState(false);
-    const [no, setno] = useState();
+    const [pay, setPay] = useState(false);
+    const [no, setNo] = useState();
     const location = useLocation();
     const [orderId, setOrderId] = useState("cb7ece84e50a");
 
@@ -29,25 +31,23 @@ function Forms() {
 
     let cashfree;
 
-    const insitialzeSDK = async function () {
-        cashfree = await load({
-            mode: "production",
-        });
+    const initializeSDK = async function () {
+        cashfree = await load({ mode: "production" });
     };
-    insitialzeSDK();
+    initializeSDK();
 
     useEffect(() => {
-        if (data && Fomdfata[data]) {
-            setFormData(Fomdfata[data]);
+        if (data && Fomdfata) {
+            setFormData(Fomdfata.reduce((acc, item) => {
+                acc[item.inputName] = '';
+                return acc;
+            }, {}));
         }
     }, [location]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+        setFormData({ ...formData, [name]: value });
     };
 
     const checkForm = () => {
@@ -61,39 +61,33 @@ function Forms() {
         return true;
     };
 
-    const handleClickpay = async (e) => {
-        if (true) {
-            e.preventDefault();
-            try {
-                let sessionId = await getSessionId();
+    const handleClickPay = async (e) => {
+        e.preventDefault();
+        try {
+            let sessionId = await getSessionId();
 
-                let checkoutOptions = {
-                    paymentSessionId: sessionId,
-                    redirectTarget: "_modal",
-                };
+            let checkoutOptions = {
+                paymentSessionId: sessionId,
+                redirectTarget: "_modal",
+            };
 
-                cashfree.checkout(checkoutOptions).then((result) => {
-                    if (result.error) {
-                        console.log("User has closed the popup or there is some payment error, Check for Payment Status");
-                        console.log(result.error);
-                        
-                    }
-                    if (result.redirect) {
-                        console.log("Payment will be redirected");
-                    }
-                    if (result.paymentDetails) {
+            cashfree.checkout(checkoutOptions).then((result) => {
+                if (result.error) {
+                    console.log("User has closed the popup or there is some payment error, Check for Payment Status");
+                    console.log(result.error);
+                }
+                if (result.redirect) {
+                    console.log("Payment will be redirected");
+                }
+                if (result.paymentDetails) {
+                    console.log("Payment has been completed, Check for Payment Status");
+                    console.log(result.paymentDetails.paymentMessage);
+                    verifyPayment(orderId);
+                }
+            });
 
-                        console.log(result.paymentDetails);
-                        console.log("Payment has been completed, Check for Payment Status");
-                        console.log(result.paymentDetails.paymentMessage);
-                        verifyPayment(orderId)
-
-                    }
-                });
-
-            } catch (error) {
-                console.log(error);
-            }
+        } catch (error) {
+            console.log(error);
         }
     };
 
@@ -104,7 +98,6 @@ function Forms() {
     }
 
     const handleSubmit = (datas) => {
-
         if (true) {
             let user = {
                 key: Maindata[data],
@@ -117,9 +110,9 @@ function Forms() {
 
             setTimeout(() => {
                 alert("Your form has been Submitted");
-                setpayment(!payment);
-                setno("");
-                setpay(false);
+                setPayment(!payment);
+                setNo("");
+                setPay(false);
             }, 4000);
         }
     };
@@ -128,7 +121,7 @@ function Forms() {
         const { name, files } = e.target;
         if (files[0] && files[0].size <= 1000 * 1024) {
             if (name === "profile") {
-                setimage1(files[0]);
+                setImage1(files[0]);
             } else {
                 setImage2(files[0]);
             }
@@ -157,17 +150,12 @@ function Forms() {
             console.log(error);
         }
     };
-    
-    console.log(orderId.replace(/^["'`]+|["'`]+$/g, ""),orderId)
 
     const verifyPayment = async (orderId) => {
         console.log(`Verifying payment for orderId: ${orderId}`);
-
-        console.log(orderId.replace(/^["'`]+|["'`]+$/g, ""),orderId)
         try {
             let res = await axios.post("https://us-central1-pushpam-25b50.cloudfunctions.net/api/verify", {
-                orderId:orderId.replace(/^["'`]+|["'`]+$/g, "")
-
+                orderId: orderId.replace(/^["'`]+|["'`]+$/g, "")
             });
 
             if (res && res.data) {
@@ -175,8 +163,8 @@ function Forms() {
                 const datanew = res.data[0];
                 console.log(datanew);
 
-                alert("payment verified");
-                 handleSubmit(datanew);
+                alert("Payment verified");
+                handleSubmit(datanew);
             }
 
         } catch (error) {
@@ -184,68 +172,54 @@ function Forms() {
         }
     };
 
-    const Phoeno = (e) => {
-        setno(e.target.value);
+    const PhoneNo = (e) => {
+        setNo(e.target.value);
     };
-   
-    const ChecekFormdat = () => {
-        console.log(error)
+
+    const checkFormData = () => {
+        console.log(error);
         if (checkForm()) {
-            setpay(true)
+            setPay(true);
         }
-    }
+    };
 
-    const select = ["gender"];
-    const number = ["age", "phoneNumber"]
-
-    const Fomriput = (x) => {
-        if ((select.indexOf(x) !== -1)) {
-            return (
-                <Form.Group className="mb-3" key={x}>
-                    <Form.Label>{x}</Form.Label>
-                    <Form.Select name={x} value={formData[x]} onChange={handleChange}>
-                        <option value="">Choose...</option>
-                        <option value="option1">Male</option>
-                        <option value="option2">Female</option>
-                    </Form.Select>
-                </Form.Group>
-            )
-        } else if ((number.indexOf(x) !== -1)){
-            return (<Form.Group className="mb-3" key={x}>
-                <Form.Label>{x}</Form.Label>
-                <Form.Control
-                    type="number"
-                    name={x}
-                    value={formData[x] || ''}
-                    onChange={handleChange}
-                    placeholder={`Enter ${x}`}
-                />
-            </Form.Group>)
-        }else{
-            return (
-                <Form.Group className="mb-3" key={x}>
-                <Form.Label>{x}</Form.Label>
-                <Form.Control
-                    type="text"
-                    name={x}
-                    value={formData[x] || ''}
-                    onChange={handleChange}
-                    placeholder={`Enter ${x}`}
-                />
-            </Form.Group>
-
-            )
+    const renderFormInput = (item) => {
+        const { inputType, inputName, options } = item;
+        switch (inputType) {
+            case "select":
+                return (
+                    <Form.Group className="mb-3" key={inputName}>
+                        <Form.Label>{inputName}</Form.Label>
+                        <Form.Select name={inputName} value={formData[inputName]} onChange={handleChange}>
+                            <option value="">Choose...</option>
+                            {options.map((option, index) => (
+                                <option key={index} value={option}>{option}</option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                );
+            default:
+                return (
+                    <Form.Group className="mb-3" key={inputName}>
+                        <Form.Label>{inputName}</Form.Label>
+                        <Form.Control
+                            type={inputType}
+                            name={inputName}
+                            value={formData[inputName] || ''}
+                            onChange={handleChange}
+                            placeholder={`Enter ${inputName}`}
+                        />
+                    </Form.Group>
+                );
         }
-    }
+    };
+
     return (
         <div className='Inputs'>
             {!payment && !pay &&
                 <Form style={{ width: "83%" }}>
-                    {formData && !pay && Object.keys(formData).map((x) => (
-                        <>
-                              {Fomriput(x)}
-
-                        </>
+                    {Fomdfata.map((item) => (
+                        renderFormInput(item)
                     ))}
                     {!pay &&
                         <>
@@ -262,13 +236,12 @@ function Forms() {
                                 <Form.Label>Upload Signature</Form.Label>
                                 <Form.Control
                                     type="file"
-                                    name="signutre"
+                                    name="signature"
                                     accept="image/*"
                                     onChange={handleFileChange}
                                 />
                             </Form.Group>
-
-                            <Button variant="primary" onClick={() => ChecekFormdat()}>
+                            <Button variant="primary" onClick={() => checkFormData()}>
                                 Submit
                             </Button>
                         </>
@@ -282,14 +255,14 @@ function Forms() {
             }
             {pay &&
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <Form.Label>Phoen no </Form.Label>
+                    <Form.Label>Phone Number</Form.Label>
                     <Form.Control
                         type="number"
                         value={no}
-                        onChange={Phoeno}
-                        placeholder={`Enter Paying No`}
+                        onChange={PhoneNo}
+                        placeholder={`Enter Phone Number`}
                     />
-                    <Button style={{ marginTop: "20px" }} variant="primary" onClick={(e) => handleClickpay(e)}>
+                    <Button style={{ marginTop: "20px" }} variant="primary" onClick={(e) => handleClickPay(e)}>
                         Pay
                     </Button>
                 </div>
@@ -298,4 +271,4 @@ function Forms() {
     );
 }
 
-export default Forms;
+export default Forms

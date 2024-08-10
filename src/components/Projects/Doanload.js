@@ -12,7 +12,7 @@ const DownloadButton = ({pdf}) => {
     document.body.removeChild(link);
   };
   return (
-    <Button onClick={handleDownload} variant="primary" >
+    <Button style={{marginLeft:"10px"}} onClick={handleDownload} variant="primary" >
  
       Download PDF
       </Button>
