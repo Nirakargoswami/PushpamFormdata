@@ -13,111 +13,123 @@ import Yuvava from "../Assets/YuvaRojgar.pdf"
 export const Fomdfata = [
     {
         inputType: "text",
-        inputName: "SurName"
+        inputName: "Surname",
+        translate: "અટક"
     },
     {
         inputType: "text",
-        inputName: "First Name"
+        inputName: "First Name",
+        translate: "પ્રથમ નામ"
     },
     {
         inputType: "text",
-        inputName: "Father/Husband Name"
+        inputName: "Father/Husband Name",
+        translate: "પિતાનું/પતિનું નામ"
     },
     {
         inputType: "date",
-        inputName: "Date of Birth"
+        inputName: "Date of Birth",
+        translate: "જન્મ તારીખ"
     },
     {
         inputType: "select",
         inputName: "Gender",
+        translate: "લિંગ",
         options: ["Male", "Female", "Other"]
     },
     {
         inputType: "select",
         inputName: "Marital Staus",
+        translate: "વૈવાહિક સ્થિતિ",
         options: ["Married", "Single", "Widow"]
     },
     {
         inputType: "select",
         inputName: "Category",
-        options: ["St", "Sc", "Obc","Open","Ews","Other"]
+        translate: "વર્ગ",
+        options: ["St", "Sc", "Obc", "Open", "Ews", "Other"]
     },
     {
-
         inputType: "text",
-        inputName: "Cast Certificate No"
+        inputName: "Cast Certificate No",
+        translate: "જાતિ પ્રમાણપત્ર નંબર"
     },
     {
         inputType: "date",
-        inputName: "Cast Certificate Date"
+        inputName: "Cast Certificate Date",
+        translate: "જાતિ પ્રમાણપત્ર તારીખ"
     },
     {
-
         inputType: "number",
-        inputName: "Number"
+        inputName: "Number",
+        translate: "નંબર"
     },
     {
-
         inputType: "number",
-        inputName: "Age"
+        inputName: "Age",
+        translate: "ઉંમર"
     },
     {
         inputType: "select",
         inputName: "Designation",
-        options: ["Farmer", "Job","Gov Job"]
+        translate: "હોદ્દો",
+        options: ["Farmer", "Job", "Gov Job"]
     },
     {
-
         inputType: "text",
-        inputName: "Adress"
+        inputName: "Adress",
+        translate: "સરનામું"
     },
     {
-
         inputType: "text",
-        inputName: "District"
+        inputName: "District",
+        translate: "જિલ્લો"
     },
     {
-
         inputType: "text",
-        inputName: "State"
+        inputName: "State",
+        translate: "રાજ્ય"
     },
     {
-
         inputType: "number",
-        inputName: "Pincode"
+        inputName: "Pincode",
+        translate: "પિનકોડ"
     },
     {
-
         inputType: "number",
-        inputName: "Adhar Card Number"
-    },
-     {
-
-        inputType: "number",
-        inputName: "Anual Income"
+        inputName: "Adhar Card Number",
+        translate: "આધાર કાર્ડ નંબર"
     },
     {
-
         inputType: "number",
-        inputName: "Number of  Family Membor's In Family"
+        inputName: "Anual Income",
+        translate: "વાર્ષિક આવક"
     },
-    
+    {
+        inputType: "number",
+        inputName: "Number of Family Membor's In Family",
+        translate: "કુટુંબમાં પરિવારના સભ્યોની સંખ્યા"
+    },
     {
         inputType: "select",
         inputName: "Gov Help",
-        options: ["YEs", "No"]
+        translate: "સરકારી મદદ",
+        options: ["Yes", "No"]
     },
-     {
+    {
         inputType: "select",
         inputName: "Are you Disable",
-        options: ["YEs", "No"]
+        translate: "તમે અપંગ છો?",
+        options: ["Yes", "No"]
     },
     {
         inputType: "select",
         inputName: "Do you have Your Own House",
-        options: ["YEs", "No"]
-    },
+        translate: "તમે તમારું ઘર ધરાવો છો?",
+        options: ["Yes", "No"]
+    }
 ];
+
 
 
 

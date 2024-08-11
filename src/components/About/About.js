@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect ,useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Github from "./Github";
@@ -10,6 +10,11 @@ import Toolstack from "./Toolstack";
 import { Document, Page } from 'react-pdf';
 
 function About() {
+  const [width, setWidth] = useState(1200);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
   return (
     <Container fluid className="about-section">
       <Particle />
@@ -43,24 +48,26 @@ function About() {
 
 
 
-          
+
           </Col>
-          
-          <Col>
-          <Document file={ABoutpdf} >
-            <Page pageNumber={1} />
+
+          <Row className="resume">
+
+            
+            <Document file={ABoutpdf} className="d-flex justify-content-center">
+            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
           </Document>
-          </Col>
+          </Row>
 
-         
-          
+
+
         </Row>
-    
-      
-       
-       
 
-       
+
+
+
+
+
 
 
       </Container>
