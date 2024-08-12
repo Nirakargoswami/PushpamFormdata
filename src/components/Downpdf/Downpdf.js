@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
+import fontkit from '@pdf-lib/fontkit';
 import Template from "../../Assets/Beige.pdf";
+import GujaratiFont from "../../Assets/shrutib.ttf"; // Path to your Gujarati font
 
-const Downloadpdf = ({ userData, Cropeiagmefile }) => {
+const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonType}) => {
     const [PDF, setPdf] = useState(null);
 
     const readFileAsArrayBuffer = (file) => {
@@ -15,55 +17,105 @@ const Downloadpdf = ({ userData, Cropeiagmefile }) => {
     };
 
     const downloadTemplate = async () => {
-        if (!Template) return;
+        try {
+            if (!Template) return;
 
-        // Fetch the PDF template as a blob and convert it to an ArrayBuffer
-        const response = await fetch(Template);
-        const existingPdfBytes = await response.arrayBuffer();
+            // Fetch the PDF template
+            const response = await fetch(Template);
+            const existingPdfBytes = await response.arrayBuffer();
 
-        const pdfDoc = await PDFDocument.load(existingPdfBytes);
-        const pages = pdfDoc.getPages();
-        const firstPage = pages[0];
-        const fontSize = 12;
-        const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-        let Y = 700;
+            // Load the PDF document
+            const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-        Object.entries(userData).forEach(([key2, value]) => {
-            Y -= 20;
-            console.log(`Key: ${key2}, Value: ${value}`);
-            const X = 60;
-            const keyText = `${key2} `;
-            firstPage.drawText(keyText, { x: X, y: Y, size: fontSize, font: helveticaFont, color: rgb(0, 0, 0) });
-            firstPage.drawText(":", { x: 170, y: Y, size: fontSize, font: helveticaFont, color: rgb(0, 0, 0) });
-            firstPage.drawText(value, { x: 200, y: Y, size: fontSize, font: helveticaFont, color: rgb(0, 0, 0) });
-        });
+            // Register fontkit
+            pdfDoc.registerFontkit(fontkit);
 
-        // Convert the image file to ArrayBuffer
-        const imageArrayBuffer = await readFileAsArrayBuffer(Cropeiagmefile);
-        const image = await pdfDoc.embedJpg(imageArrayBuffer);
+            const pages = pdfDoc.getPages();
+            const firstPage = pages[0];
+            const fontSize = 12;
 
-        const xPosition = 345;
-        const yPosition = 530;
-        const width = 150;
-        const height = 200;
+            // Embed the custom Gujarati font
+            const gujaratiFontBytes = await fetch(GujaratiFont).then(res => res.arrayBuffer());
+            const gujaratiFont = await pdfDoc.embedFont(gujaratiFontBytes);
 
-        firstPage.drawImage(image, {
-            x: xPosition,
-            y: yPosition,
-            width: width,
-            height: height,
-        });
+            let Y = 655;
+            const imageArrayBuffer = await readFileAsArrayBuffer(Cropeiagmefile);
+            
+            // Embed the image based on its type (JPEG or PNG)
+            let image;
+            if (Cropeiagmefile.type === 'image/jpeg') {
+                image = await pdfDoc.embedJpg(imageArrayBuffer);
+            } else if (Cropeiagmefile.type === 'image/png') {
+                image = await pdfDoc.embedPng(imageArrayBuffer);
+            } else {
+                throw new Error("Unsupported image format. Please use JPEG or PNG.");
+            }
+            const currentDate = new Date()
+            firstPage.drawText(`MAHALAXMI  VIVIDHALAXI  VIKAS  ORGANIZATION  NON GOVE.ORG.  `, { x: 20, y: 820, size: 17, font: gujaratiFont, color: rgb(0, 0, 0) });
 
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        setPdf(`${url}#toolbar=0`);
+            firstPage.drawText(`Application No : ${Applicaitonnon} `, { x: 10, y: 775, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
 
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'populated_template.pdf';
-        a.click();
-        URL.revokeObjectURL(url);
+            firstPage.drawText(`Application Date : ${currentDate} `, { x: 10, y: 750, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+
+            firstPage.drawText(`Application Type : ${ApplicaitonnonType} `, { x: 10, y: 735, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+
+            const xPosition = 450;
+            const yPosition = 710;
+            const width = 100;
+            const height = 100;
+            firstPage.drawImage(image, {
+                x: xPosition,
+                y: yPosition,
+                width: width,
+                height: height,
+            });
+            firstPage.drawImage(image, {
+                x: 450,
+                y: 680,
+                width: width,
+                height: 20,
+            });
+
+            firstPage.drawLine({
+                start: { x: 10, y: 670  },
+                end: { x: 550, y: 670  },
+                thickness: 1,
+                color: rgb(0, 0, 0),
+            });
+            firstPage.drawText("Candidate Information", { x: 10, y: 655, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+
+
+            // Populate the PDF with user data
+            Object.entries(userData).forEach(([key2, value]) => {
+                Y -= 20;
+                const X = 60;
+                const keyText = `${key2} `;
+                firstPage.drawText(keyText, { x: X, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+                firstPage.drawText("-:", { x: 180, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+                firstPage.drawText(value, { x: 200, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+            });
+
+            // Convert the image file to ArrayBuffer
+         
+
+            // Draw the image on the PDF
+            
+
+            // Save the modified PDF
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            setPdf(`${url}#toolbar=0`);
+
+            // Automatically download the PDF
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'MAHALAXMI.pdf';
+            a.click();
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+        }
     };
 
     return (

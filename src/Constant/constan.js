@@ -11,11 +11,7 @@ import Yuvava from "../Assets/YuvaRojgar.pdf"
 
 
 export const Fomdfata = [
-    {
-        inputType: "text",
-        inputName: "Surname",
-        translate: "અટક"
-    },
+  
     {
         inputType: "text",
         inputName: "First Name",
@@ -27,14 +23,19 @@ export const Fomdfata = [
         translate: "પિતાનું/પતિનું નામ"
     },
     {
+        inputType: "text",
+        inputName: "Surname",
+        translate: "અટક"
+    },
+    {
         inputType: "date",
         inputName: "Date of Birth",
-        translate: "જન્મ તારીખ"
+        translate: "Date of Birth"
     },
     {
         inputType: "select",
         inputName: "Gender",
-        translate: "લિંગ",
+        translate: "Gender",
         options: ["Male", "Female", "Other"]
     },
     {
@@ -54,11 +55,7 @@ export const Fomdfata = [
         inputName: "Cast Certificate No",
         translate: "જાતિ પ્રમાણપત્ર નંબર"
     },
-    {
-        inputType: "date",
-        inputName: "Cast Certificate Date",
-        translate: "જાતિ પ્રમાણપત્ર તારીખ"
-    },
+  
     {
         inputType: "number",
         inputName: "Number",
@@ -98,7 +95,7 @@ export const Fomdfata = [
     {
         inputType: "number",
         inputName: "Adhar Card Number",
-        translate: "આધાર કાર્ડ નંબર"
+        translate:"આધાર કાર્ડ નંબર"
     },
     {
         inputType: "number",
