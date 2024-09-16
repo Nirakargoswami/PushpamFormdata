@@ -10,6 +10,7 @@ import Form from "./components/Form/form"
 import Signup from "./components/Autentication/Signup";
 import Login from "./components/Autentication/Login"
 import Tempalte from "./components/Template/Templates"
+import Contect from "./components/contect/contectus"
 import {
   BrowserRouter as Router,
   Route,
@@ -45,6 +46,8 @@ function App() {
         <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contect" element={< Contect/>} />
+
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           {/* <Route path="/resume" element={<Resume />} /> */}

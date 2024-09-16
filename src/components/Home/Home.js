@@ -69,8 +69,7 @@ function Home() {
       <div className="cardbox banner">
         <div class="card banner" style={{ width: "18rem" }}>
           <div className="Bludrbox">
-          હાલમાં આ ફોર્મ ની અરજી લેવામાં આવી રહી નથી
-          </div>
+          લક્ષ્યાંક પૂરો થઈ ગયેલ હોવાથી અરજી કરી શકાશે નહિ.          </div>
           <div style={{opacity:"0.7"}} class="card-body">
             <img src={Bikerepair} class="card-img-top" alt="..." />
             <h5 class="card-title">Motar revainding and light fetting</h5>

@@ -109,18 +109,14 @@ async function searchUserByPhoneNumber(phoneNumber) {
   try {
     // Reference to the collection where documents are stored
     const collectionRef = collection(db, "sanatry");
-
     // Create a query against the collection
     const q = query(collectionRef, where("phoneNumber", "==", phoneNumber));
-
     // Execute the query and get the documents
     const querySnapshot = await getDocs(q);
-
     if (querySnapshot.empty) {
       console.log("No matching documents found.");
       return null;
     }
-
     // Iterate through the documents and log the data
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());

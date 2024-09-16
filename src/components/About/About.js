@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Github from "./Github";
@@ -46,18 +46,24 @@ function About() {
             <h3 className="project-heading">
               6.	ઘર વપરાશ ની ચીજ વસ્તુઓ લોકોને મળી રહે.                  </h3>
 
-
-
-
           </Col>
 
           <Row className="resume">
 
-            
+
             <Document file={ABoutpdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
+              <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+            </Document>
           </Row>
+          <div>
+          Email us on : support@srimahalaxmi.org.in
+
+          </div>
+
+          <div>
+            Address -
+            15,Vrunda Society, Pathik Bangalow, Ravi Shankar Vidya Mandir, Pune, Maharastra,  411030
+          </div>
 
 
 
