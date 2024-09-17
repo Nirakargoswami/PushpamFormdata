@@ -96,22 +96,7 @@ function Forms() {
         const randomId = String(randomNumber).padStart(6, '0');
         return randomId;
     }
-    function generateUniqueUserID() {
-        // Generate a random 4-digit number
-        const random4DigitNumber = () => Math.floor(Math.random() * 9000) + 1000;
-      
-        // Get the last 4 letters of the name
-        const last4Letters = formData.name.slice(-4).toLowerCase();
-      
-        let id = `${last4Letters}${random4DigitNumber()}`;
-      
-        // Ensure ID is unique
-      
-      
-        // Save user data with ID
-      console.log(id)
-        return id;
-      }
+   
     const handleSubmit = (datas) => {
         if (true) {
             let user = {
@@ -267,7 +252,7 @@ function Forms() {
             }
              {
                 true && 
-                <Downloadpdf userData={formData} Cropeiagmefile={image1} Applicaitonnon={formData.name && generateUniqueUserID()} ApplicaitonnonType={Maindata[data]}/>
+                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}  Applicaitonnon={formData.FirstName && generateUniqueUserID()} ApplicaitonnonType={Maindata[data]}/>
             }
             {/* {
                 payment && !pay &&

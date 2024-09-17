@@ -4,9 +4,27 @@ import fontkit from '@pdf-lib/fontkit';
 import Template from "../../Assets/Beige.pdf";
 import GujaratiFont from "../../Assets/shrutib.ttf"; // Path to your Gujarati font
 
-const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonType}) => {
+const Downloadpdf = ({ userData, Cropeiagmefile ,CropeiagmefileSignatur,ApplicaitonnonType}) => {
     const [PDF, setPdf] = useState(null);
 
+    function generateUniqueUserID() {
+        // Generate a random 4-digit number
+        const random4DigitNumber = () => Math.floor(Math.random() * 9000) + 1000;
+      
+        // Get the last 4 letters of the name
+        console.log(userData)
+        const last4Letters = userData["First Name"].slice(-4).toLowerCase();
+        console.log(last4Letters)
+        let id = `${last4Letters}${random4DigitNumber()}`;
+      
+        // Ensure ID is unique
+      
+      
+        // Save user data with ID
+      console.log(id)
+        return id;
+      }
+    
     const readFileAsArrayBuffer = (file) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -40,7 +58,8 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonTy
 
             let Y = 655;
             const imageArrayBuffer = await readFileAsArrayBuffer(Cropeiagmefile);
-            
+            const imageArray = await readFileAsArrayBuffer(CropeiagmefileSignatur);
+
             // Embed the image based on its type (JPEG or PNG)
             let image;
             if (Cropeiagmefile.type === 'image/jpeg') {
@@ -50,10 +69,18 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonTy
             } else {
                 throw new Error("Unsupported image format. Please use JPEG or PNG.");
             }
-            const currentDate = new Date()
+            let imageprofile;
+            if (CropeiagmefileSignatur.type === 'image/jpeg') {
+                imageprofile = await pdfDoc.embedJpg(imageArray);
+            } else if (CropeiagmefileSignatur.type === 'image/png') {
+                imageprofile = await pdfDoc.embedPng(imageArray);
+            } else {
+                throw new Error("Unsupported image format. Please use JPEG or PNG.");
+            }
+            const currentDate = new Date().toISOString().split('T')[0]
             firstPage.drawText(`MAHALAXMI  VIVIDHALAXI  VIKAS  ORGANIZATION  NON GOVE.ORG.  `, { x: 20, y: 820, size: 17, font: gujaratiFont, color: rgb(0, 0, 0) });
 
-            firstPage.drawText(`Application No : ${Applicaitonnon} `, { x: 10, y: 775, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+            firstPage.drawText(`Application No : ${generateUniqueUserID()} `, { x: 10, y: 775, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
 
             firstPage.drawText(`Application Date : ${currentDate} `, { x: 10, y: 750, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
 
@@ -69,7 +96,7 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonTy
                 width: width,
                 height: height,
             });
-            firstPage.drawImage(image, {
+            firstPage.drawImage(imageprofile, {
                 x: 450,
                 y: 680,
                 width: width,
@@ -91,8 +118,8 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,Applicaitonnon,ApplicaitonnonTy
                 const X = 60;
                 const keyText = `${key2} `;
                 firstPage.drawText(keyText, { x: X, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
-                firstPage.drawText("-:", { x: 180, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
-                firstPage.drawText(value, { x: 200, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+                firstPage.drawText("-", { x: 300, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
+                firstPage.drawText(value, { x: 350, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
             });
 
             // Convert the image file to ArrayBuffer
