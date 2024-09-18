@@ -67,14 +67,14 @@ function ProjectCards(props) {
             Large Modal
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-
-        <Row className="resume">
-          <Document file={props.pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
-          
+        <Modal.Body style={{  overflowY: 'auto' }}>
+          <Row className="resume">
+            <Document file={props.pdf} className="d-flex flex-column align-items-center">
+              {[1, 2].map(page => (
+                <Page key={page} pageNumber={page} scale={width > 786 ? 1.7 : 0.6} />
+              ))}
+            </Document>
+          </Row>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

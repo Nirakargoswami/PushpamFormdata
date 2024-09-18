@@ -190,7 +190,7 @@ function Forms() {
             case "select":
                 return (
                     <Form.Group className="mb-3" key={inputName}>
-                        <Form.Label>{translate}</Form.Label>
+                        <Form.Label>{inputName}</Form.Label>
                         <Form.Select name={inputName} value={formData[inputName]} onChange={handleChange}>
                             <option value="">{translate}</option>
                             {options.map((option, index) => (
@@ -225,7 +225,7 @@ function Forms() {
                     {!pay &&
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label>Upload profile</Form.Label>
+                                <Form.Label>Upload profile Photo</Form.Label>
                                 <Form.Control
                                     type="file"
                                     name="profile"
@@ -250,15 +250,15 @@ function Forms() {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </Form>
             }
-             {
+             {/* {
                 true && 
-                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}  Applicaitonnon={formData.FirstName && generateUniqueUserID()} ApplicaitonnonType={Maindata[data]}/>
-            }
-            {/* {
-                payment && !pay &&
-                <Downloadpdf userData={formData} Cropeiagmefile={image1} />
+                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
             } */}
-            {/* {pay &&
+            {
+                payment && !pay &&
+                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
+            }
+            {pay &&
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control
@@ -271,7 +271,7 @@ function Forms() {
                         Pay
                     </Button>
                 </div>
-            } */}
+            }
         </div>
     );
 }
