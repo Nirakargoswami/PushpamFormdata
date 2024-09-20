@@ -259,11 +259,11 @@ function Forms() {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </Form>
             }
-            {/* {
+            {
                 true && 
                 <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
-            } */}
-            {
+            }
+            {/* {
                 payment && !pay &&
                 <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1} ApplicaitonnonType={Maindata[data]} />
             }
@@ -281,7 +281,7 @@ function Forms() {
                         Pay
                     </Button>
                 </div>
-            }
+            } */}
         </div>
     );
 }

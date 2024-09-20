@@ -28,7 +28,6 @@ function Home() {
 
 
         <Container className="home-content">
-        <h1 style={{textAlign:"center", color:"black",marginTop:"98px",fontWeight:"700"}} >MAHALAXMI VIVIDHALAXI VIKAS ORGANIZATION</h1>
 
           <Fade />
           <Row>
@@ -50,10 +49,13 @@ function Home() {
               {/* <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
               </div> */}
+              <h1 style={{ textAlign: "center", color: "black", marginTop: "10px", marginBottom: "10px", fontWeight: "700" }} >MAHALAXMI VIVIDHALAXI VIKAS ORGANIZATION</h1>
+
             </Col >
-            <h2 style={{ color: "black", textAlign: "center", fontWeight: "900" }}>
+
+            <h4 style={{ color: "black", textAlign: "center",marginTop: "20px", fontWeight: "500" }}>
               Empowering women and Skill of men is the cornerstone of building resilient families, cohesive communities, and thriving nations
-            </h2>
+            </h4>
           </Row>
 
         </Container>
@@ -61,7 +63,7 @@ function Home() {
       </Container>
       {/* <Home2 /> */}
       {/* <Form /> */}
-
+     
       {/* <Paynow /> */}
       <div className="porjTitle">
         <h2 style={{ color: "black", textAlign: "center", fontWeight: "500" }}>
@@ -71,8 +73,8 @@ function Home() {
       <div className="cardbox banner">
         <div class="card banner" style={{ width: "18rem" }}>
           <div className="Bludrbox">
-          લક્ષ્યાંક પૂરો થઈ ગયેલ હોવાથી અરજી કરી શકાશે નહિ.          </div>
-          <div style={{opacity:"0.7"}} class="card-body">
+            લક્ષ્યાંક પૂરો થઈ ગયેલ હોવાથી અરજી કરી શકાશે નહિ.          </div>
+          <div style={{ opacity: "0.7" }} class="card-body">
             <img src={Bikerepair} class="card-img-top" alt="..." />
             <h5 class="card-title">Motar revainding and light fetting</h5>
             <p class="card-text">"ધણા યુવાનો જોડે સ્કિલ છે પણ ધંધો શરૂ કરવા માટે સાધનો હોતા નથી , આવા યુવાનો ને સાધનો પૂરા પાડવા જેથી પોતાનો રોજગાર મેળવી શકે . ધણા યુવાનો જોડે સ્કિલ છે એવાં યુવાનો  પ્રાઈવેટ જોબ કરવા માગે છે પણ સર્ટિફિકેટ ના હોવાના કારણે જોબ કરી શકતા નથી તો આવા યુવનાઓને સર્ટિફિકેટ અને સાધનોની  કીટ આપવી."</p>
@@ -82,8 +84,8 @@ function Home() {
 
           </div>
         </div>
-      
-       
+
+
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]
           return (

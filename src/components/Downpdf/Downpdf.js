@@ -78,7 +78,7 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,CropeiagmefileSignatur,Applicai
                 throw new Error("Unsupported image format. Please use JPEG or PNG.");
             }
             const currentDate = new Date().toISOString().split('T')[0]
-            firstPage.drawText(`MAHALAXMI  VIVIDHALAXI  VIKAS  ORGANIZATION  NON GOVE.ORG.  `, { x: 20, y: 820, size: 17, font: gujaratiFont, color: rgb(0, 0, 0) });
+            firstPage.drawText(`MAHALAXMI  VIVIDHALAXI  VIKAS  ORGANIZATION `, { x: 20, y: 820, size: 17, font: gujaratiFont, color: rgb(0, 0, 0) });
 
             firstPage.drawText(`Application No : ${generateUniqueUserID()} `, { x: 10, y: 775, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
 
@@ -121,6 +121,14 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,CropeiagmefileSignatur,Applicai
                 firstPage.drawText("-", { x: 300, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
                 firstPage.drawText(value, { x: 350, y: Y, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) });
             });
+            console.log(Y)
+        const Text = "I solemnly declare :-    that the details given above are correct to the best of my knowledge" 
+        const Text2 = "and if any details are found to be incorrect, it will be at the discretion of the institution."
+        const text3 =  "I have read and understood all the rules in the advertisement and filled this application form."
+
+            firstPage.drawText(Text,{ x: 60, y: 100, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) })
+            firstPage.drawText(Text2,{ x: 60, y: 90, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) })
+            firstPage.drawText(text3,{ x: 60, y: 80, size: fontSize, font: gujaratiFont, color: rgb(0, 0, 0) })
 
             // Convert the image file to ArrayBuffer
          
@@ -147,7 +155,7 @@ const Downloadpdf = ({ userData, Cropeiagmefile ,CropeiagmefileSignatur,Applicai
 
     return (
         <div className='maininput'>
-            <button onClick={downloadTemplate}>Download Template as PDF</button>
+            <button onClick={downloadTemplate}>Download Form</button>
             {PDF && <iframe src={PDF} width="100%" height="500px"></iframe>}
         </div>
     );
