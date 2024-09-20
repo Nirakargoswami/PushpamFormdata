@@ -11,6 +11,7 @@ import Signup from "./components/Autentication/Signup";
 import Login from "./components/Autentication/Login"
 import Tempalte from "./components/Template/Templates"
 import Contect from "./components/contect/contectus"
+import Consent from "./components/Concent/Conecent"
 import {
   BrowserRouter as Router,
   Route,
@@ -42,11 +43,15 @@ function App() {
     <Router>
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
+
         <Navbar />
+
         <ScrollToTop/>
         <Routes>
+          
           <Route path="/" element={<Home />} />
           <Route path="/contect" element={< Contect/>} />
+          <Route path="/Consent" element={< Consent/>} />
 
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />

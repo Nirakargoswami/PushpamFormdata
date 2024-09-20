@@ -28,6 +28,8 @@ function Home() {
 
 
         <Container className="home-content">
+        <h1 style={{textAlign:"center", color:"black",marginTop:"98px",fontWeight:"700"}} >MAHALAXMI VIVIDHALAXI VIKAS ORGANIZATION</h1>
+
           <Fade />
           <Row>
             <Col className="home-header">
@@ -80,10 +82,7 @@ function Home() {
 
           </div>
         </div>
-        <div>
-
-       
-        </div>
+      
        
         {Object.keys(Formdetali).map((x) => {
           const object = Formdetali[x]
@@ -92,7 +91,7 @@ function Home() {
 
               <div class="card-body">
                 {object.imge && <img src={object.imge} class="card-img-top" alt="..." />
-                }                <h5 class="card-title">{object.Title}</h5>
+                }                <h2 class="card-title">{object.Title}</h2>
                 <p class="card-text">{object.detailtext}</p>
                 <Nav.Link
                   as={Link}

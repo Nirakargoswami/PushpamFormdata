@@ -44,9 +44,9 @@ const TemplateViewer = ({ templateFile, userData }) => {
             Y -= 50
         });
         //   const imgBytes = await fetch(Cropeiagmefile).then((res) => res.arrayBuffer());
-
+      const Text = "Consent:- I solemnly declare that the details given above are correct to the best of my knowledge and if any details are found to be incorrect, it will be at the discretion of the institution. I have read and understood all the rules in the advertisement and filled this application form."
         const image = await pdfDoc.embedPng(Cropeiagmefile);
-
+           firstPage.drawText(Text,{ x: 200, y: Y - 20, size: fontSize, font: helveticaFont, color: rgb(0, 0, 0) })
         // Adjust the position as needed
         const xPosition = 345; // X coordinate of the image
         const yPosition = 530; // Y coordinate of the image

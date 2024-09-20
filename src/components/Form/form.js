@@ -23,6 +23,7 @@ function Forms() {
     const [image2, setImage2] = useState();
     const [pay, setPay] = useState(false);
     const [no, setNo] = useState();
+   const [concet,setCocnet] = useState(false)
     const location = useLocation();
     const [orderId, setOrderId] = useState("cb7ece84e50a");
 
@@ -52,8 +53,12 @@ function Forms() {
 
     const checkForm = () => {
         for (const key in formData) {
-            if (formData[key] === '') {
+            if (formData[key] === '' ) {
                 setError(`Please fill in ${key}`);
+                return false;
+            }
+            if (!concet) {
+                setError(`Please fill The Concent`);
                 return false;
             }
         }
@@ -96,7 +101,7 @@ function Forms() {
         const randomId = String(randomNumber).padStart(6, '0');
         return randomId;
     }
-   
+
     const handleSubmit = (datas) => {
         if (true) {
             let user = {
@@ -171,7 +176,7 @@ function Forms() {
             console.log(error);
         }
     };
-    
+
 
     const PhoneNo = (e) => {
         setNo(e.target.value);
@@ -185,7 +190,7 @@ function Forms() {
     };
 
     const renderFormInput = (item) => {
-        const { inputType, inputName, options ,translate } = item;
+        const { inputType, inputName, options, translate } = item;
         switch (inputType) {
             case "select":
                 return (
@@ -242,6 +247,10 @@ function Forms() {
                                     onChange={handleFileChange}
                                 />
                             </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check onClick={() => setCocnet(!concet)} type="checkbox" label="Concent" />
+                            </Form.Group>
+
                             <Button variant="primary" onClick={() => checkFormData()}>
                                 Submit
                             </Button>
@@ -250,13 +259,13 @@ function Forms() {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </Form>
             }
-             {/* {
+            {/* {
                 true && 
                 <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
             } */}
             {
                 payment && !pay &&
-                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
+                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1} ApplicaitonnonType={Maindata[data]} />
             }
             {pay &&
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -267,6 +276,7 @@ function Forms() {
                         onChange={PhoneNo}
                         placeholder={`Enter Phone Number`}
                     />
+
                     <Button style={{ marginTop: "20px" }} variant="primary" onClick={(e) => handleClickPay(e)}>
                         Pay
                     </Button>
