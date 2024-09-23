@@ -22,7 +22,10 @@ import {
   addDoc,
   getDoc,
   updateDoc,
+  getStorage,
   doc,
+  getDownloadURL,
+  uploadBytes
 
 } from "firebase/firestore";
 
@@ -43,12 +46,19 @@ const firebaseConfig = {
 };
 
 
+const storage = getStorage(app);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-
+const HandleImageUpdload = async (file1) => {
+  const storageRef = ref(storage, `images/${file1.name}`);
+  await uploadBytes(storageRef, file1);
+  const downloadURL = await getDownloadURL(storageRef);
+return downloadURL
+  //console.log('Image uploaded successfully');
+};
 
 function generateRandom4DigitNumber() {
   // Generate a random number between 1000 and 9999
@@ -729,6 +739,7 @@ export {
   // Distrubutrcoin,
   // Getrankdata,
   onAuthStateChanged,
+  HandleImageUpdload,
   Getallscore,
   Creatuser
 };

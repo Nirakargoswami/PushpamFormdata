@@ -3,7 +3,6 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import Template from "../../Assets/Beige.pdf";
 import GujaratiFont from "../../Assets/shrutib.ttf"; // Path to your Gujarati font
-
 const Downloadpdf = ({ userData, Cropeiagmefile ,CropeiagmefileSignatur,ApplicaitonnonType}) => {
     const [PDF, setPdf] = useState(null);
 
