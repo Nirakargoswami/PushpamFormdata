@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import Pdfgenraort from "../Pdfgenarot/Pdfgenator"
 import Fade from "../Corousl"
 import { Formdetali } from "../../Constant/constan"
-
+import Imagegallry from "../Imagegalery/galaeyr"
 import Bikerepair from "../../Assets/Beauty.jpg"
 
 
@@ -49,7 +49,7 @@ function Home() {
               {/* <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
               </div> */}
-              <h1 style={{ textAlign: "center", color: "black", marginTop: "10px", marginBottom: "10px", fontWeight: "700" }} >MAHALAXMI VIVIDHALAXI VIKAS ORGANIZATION</h1>
+              <h1 style={{ textAlign: "center", color: "#623686", marginTop: "10px", marginBottom: "10px", fontWeight: "700" }} >MAHALAXMI VIVIDHALAXI VIKAS ORGANIZATION</h1>
 
             </Col >
 
@@ -66,8 +66,16 @@ function Home() {
      
       {/* <Paynow /> */}
       <div className="porjTitle">
-        <h2 style={{ color: "black", textAlign: "center", fontWeight: "500" }}>
-          Projects
+        <h2 style={{ color: "#623686", textAlign: "center", fontWeight: "500" }}>
+          Projects Galarry
+        </h2>
+      </div>
+      <div style={{marginBottom:"40px"}}>
+        <Imagegallry />
+      </div>
+      <div className="porjTitle">
+        <h2 style={{ color: "#623686", textAlign:  "center", fontWeight: "500" }}>
+          Projects 
         </h2>
       </div>
       <div className="cardbox banner">

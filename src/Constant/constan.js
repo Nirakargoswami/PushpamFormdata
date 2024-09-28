@@ -6,7 +6,7 @@ import Mobilerepair from "../Assets/Moterrevindign.png"
 import Bike from "../Assets/Bike.pdf"
 import Santery from "../Assets/Snatry.pdf"
 import Beautys from "../Assets/Beauty.pdf"
-import Yuvava from "../Assets/YuvaRojgar.pdf"
+import Reparing from "../Assets/BikePanchar.pdf"
 
 
 
@@ -153,7 +153,7 @@ export const Formdetali = {
         Title: "બાઇક રીપેરીંગ અને ટાયર પંચરની કીટ",
         imge: Tirepucnture,
         detailtext: "ધણા યુવાનો જોડે સ્કિલ છે પણ ધંધો શરૂ કરવા માટે સાધનો હોતા નથી , આવા યુવાનો ને સાધનો પૂરા પાડવા જેથી પોતાનો રોજગાર મેળવી શકે .ધણા યુવાનો જોડે સ્કિલ છે એવાં યુવાનો  પ્રાઈવેટ જોબ કરવા માગે છે પણ સર્ટિફિકેટ ના હોવાના કારણે જોબ કરી શકતા નથી તો આવા યુવનાઓને સર્ટિફિકેટ અને સાધનોની  કીટ આપવી.",
-        pdf: Yuvava
+        pdf: Reparing
     }
 
 } 

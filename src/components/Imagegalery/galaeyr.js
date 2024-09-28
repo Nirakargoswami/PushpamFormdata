@@ -1,140 +1,67 @@
+import React from "react";
+import IMAGE1 from "../../Assets/Galary2.jpeg"
+import IMAGE2 from "../../Assets/Galey1.jpeg"
+import IMAGE3 from "../../Assets/Galary3.jpeg"
+import IMAGE4 from "../../Assets/Galary4.jpeg"
+import IMAGE5 from "../../Assets/Galary6.jpeg"
+import IMAGE6 from "../../Assets/Galary5.jpeg"
 
 
 
-
-const imagegallry = () => {
+const Imagegallry = () => {
     return (
         <>
-            <section class="">
-                <section class="">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-                            <div
-                                class="bg-image hover-overlay ripple shadow-1-strong rounded"
-                                data-ripple-color="light"
-                            >
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/screens/yt/screen-video-1.webp"
-                                    class="w-100"
-                                />
-                                <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal1">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
-                                </a>
-                            </div>
-                        </div>
+            <div style={{width:"100%"}}>
 
-                        <div class="col-lg-4 mb-4 mb-lg-0">
-                            <div
-                                class="bg-image hover-overlay ripple shadow-1-strong rounded"
-                                data-ripple-color="light"
-                            >
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/screens/yt/screen-video-2.webp"
-                                    class="w-100"
-                                />
-                                <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
-                                </a>
-                            </div>
-                        </div>
+                <div className="Garylybox">
 
-                        <div class="col-lg-4 mb-4 mb-lg-0">
-                            <div
-                                class="bg-image hover-overlay ripple shadow-1-strong rounded"
-                                data-ripple-color="light"
-                            >
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/screens/yt/screen-video-3.webp"
-                                    class="w-100"
-                                />
-                                <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal3">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
-                                </a>
-                            </div>
-                        </div>
+                    <div className="imagebox">
+                        <img src={IMAGE1} style={{width:"100%",height:"100%"}} />
+
+
                     </div>
-                </section>
+                    <div className="imagebox">
+                        <img src={IMAGE5} style={{width:"100%",height:"100%"}} />
 
-                <section class="">
-                    <div
-                        class="modal fade"
-                        id="exampleModal1"
-                        tabindex="-1"
-                        aria-labelledby="exampleModal1Label"
-                        aria-hidden="true"
-                    >
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="ratio ratio-16x9">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/A3PDXmYoF5U"
-                                        title="YouTube video"
-                                        allowfullscreen
-                                    ></iframe>
-                                </div>
 
-                                <div class="text-center py-3">
-                                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div
-                        class="modal fade"
-                        id="exampleModal2"
-                        tabindex="-1"
-                        aria-labelledby="exampleModal2Label"
-                        aria-hidden="true"
-                    >
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="ratio ratio-16x9">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/wTcNtgA6gHs"
-                                        title="YouTube video"
-                                        allowfullscreen
-                                    ></iframe>
-                                </div>
+                    <div className="imagebox">
+                        <img src={IMAGE4} style={{width:"100%",height:"100%"}} />
 
-                                <div class="text-center py-3">
-                                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="modal fade"
-                        id="exampleModal3"
-                        tabindex="-1"
-                        aria-labelledby="exampleModal3Label"
-                        aria-hidden="true"
-                    >
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="ratio ratio-16x9">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
-                                        title="YouTube video"
-                                        allowfullscreen
-                                    ></iframe>
-                                </div>
 
-                                <div class="text-center py-3">
-                                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </section>
-            </section>
+                    <div className="imagebox">
+                        <img src={IMAGE3} style={{width:"100%",height:"100%"}} />
+
+
+                    </div>
+                    <div className="imagebox">
+                        <img src={IMAGE2} style={{width:"100%",height:"100%"}} />
+
+
+                    </div>
+                    <div className="imagebox">
+                        <img src={IMAGE1} style={{width:"100%",height:"100%"}} />
+
+
+                    </div>
+                    <div className="imagebox">
+                        <img src={IMAGE1} style={{width:"100%",height:"100%"}} />
+
+
+                    </div>
+                    <div className="imagebox">
+                        <img src={IMAGE1} style={{width:"100%",height:"100%"}} />
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
         </>
     )
 }
 
-export default imagegallry
+export default Imagegallry

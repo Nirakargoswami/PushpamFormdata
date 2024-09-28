@@ -49,14 +49,16 @@ function About() {
           </Col>
 
           <Row className="resume">
-
-
-            <Document file={ABoutpdf} className="d-flex justify-content-center">
-              <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+            <Document file={ABoutpdf} className="d-flex flex-column align-items-center">
+              {[1,2].map(page => (
+                <Page key={page} pageNumber={page} scale={width > 786 ? 1.7 : 0.6} />
+              ))}
             </Document>
+
+
           </Row>
           <div>
-          Email us on : support@srimahalaxmi.org.in
+            Email us on : support@srimahalaxmi.org.in
 
           </div>
 

@@ -5,14 +5,20 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { load } from '@cashfreepayments/cashfree-js';
-import { Creatuser, searchUserByPhoneNumber } from "../Firebse/firebse";
+import { Creatuser, searchUserByPhoneNumber ,HandleImageUpdload} from "../Firebse/firebse";
 import Downloadpdf from "../Downpdf/Downpdf";
 
 const Maindata = {
     1: "Sanatary pad kit",
-    2: "Motar revainding and light fetting",
-    3: "Beauty Parlor Kit",
+    2: "Beauty Parlor Kit",
+    3: "Bike Repair And Tire Puncher",
     4: "Youva Svrojgar Yojna"
+};
+const keys = {
+    1: "sanatry",
+    2: "beauty",
+    3: "Bikerepair",
+    4: "yuvasvarojgar"
 };
 
 function Forms() {
@@ -105,20 +111,26 @@ function Forms() {
     const handleSubmit = (datas) => {
         if (true) {
             let user = {
-                key: Maindata[data],
-                userdata: formData,
+                key: keys[data],
+                Forminfo: formData,
                 payment: datas.payment_amount,
                 payment_status: datas.payment_status,
+                imge1:image1.name,
+                image2:image2.name,
+                Formname:Maindata[data] 
             };
-            console.log(user);
-            Creatuser(user);
-
-            setTimeout(() => {
-                alert("Your form has been Submitted");
-                setPayment(!payment);
-                setNo("");
-                setPay(false);
-            }, 4000);
+            HandleImageUpdload(image1)
+            HandleImageUpdload(image2)
+            
+                    if( Creatuser(user)){
+                        setTimeout(() => {
+                            alert("Your form has been Submitted");
+                            setPayment(!payment);
+                            setNo("");
+                            setPay(false);
+                        }, 2000);
+                    }
+           
         }
     };
 
@@ -185,7 +197,9 @@ function Forms() {
     const checkFormData = () => {
         console.log(error);
         if (checkForm()) {
-            setPay(true);
+           
+          setPay(true)
+
         }
     };
 
@@ -259,11 +273,11 @@ function Forms() {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </Form>
             }
-            {
-                true && 
-                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
-            }
             {/* {
+                pay && 
+                <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1}   ApplicaitonnonType={Maindata[data]}/>
+            } */}
+            {
                 payment && !pay &&
                 <Downloadpdf userData={formData} CropeiagmefileSignatur={image2} Cropeiagmefile={image1} ApplicaitonnonType={Maindata[data]} />
             }
@@ -281,7 +295,7 @@ function Forms() {
                         Pay
                     </Button>
                 </div>
-            } */}
+            }
         </div>
     );
 }

@@ -25,11 +25,12 @@ function NavBar() {
       expand="md"
       className={navColour ? "sticky" : "navbar"}
     >
-      
+
       <Container>
         <Navbar.Brand href="/" className="d-flex">
           <img src={logo} className="img-fluid logo" alt="brand" />
         </Navbar.Brand>
+
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
@@ -45,6 +46,11 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/serch" onClick={() => updateExpanded(false)}>
+                <AiOutlineHome style={{ marginBottom: "2px" }} /> Serch Form
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
@@ -81,6 +87,9 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
+
+            
+
               <Nav.Link
                 as={Link}
                 to="/contect"

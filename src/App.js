@@ -10,8 +10,9 @@ import Form from "./components/Form/form"
 import Signup from "./components/Autentication/Signup";
 import Login from "./components/Autentication/Login"
 import Tempalte from "./components/Template/Templates"
-import Contect from "./components/contect/contectus"
+import Contect from "./components/contectus"
 import Consent from "./components/Concent/Conecent"
+import Serchfrom from "./components/SercehBar/serchbar"
 import {
   BrowserRouter as Router,
   Route,
@@ -40,7 +41,7 @@ function App() {
 
 
   return (
-    <Router>
+    <>
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
 
@@ -52,8 +53,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contect" element={< Contect/>} />
           <Route path="/Consent" element={< Consent/>} />
+          <Route path="/serch" element={< Serchfrom/>} />
 
-          <Route path="/project" element={<Projects />} />
+          <Route path="/Project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           {/* <Route path="/resume" element={<Resume />} /> */}
           <Route path="/template" element={<Tempalte />} />
@@ -61,11 +63,10 @@ function App() {
           {/* <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} /> */}
 
-          <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />
       </div>
-    </Router>
+      </>
   );
 }
 

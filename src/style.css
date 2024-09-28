@@ -634,8 +634,8 @@ button:focus {
 }
 
 .resume {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 50px;
+
   justify-content: center;
 }
 
@@ -1677,4 +1677,69 @@ button:focus {
     left: 11px;
     background: white;
     z-index: 100;
+}
+.srchbar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+.Listdocs{
+display: flex;
+width: 300px;
+flex-direction: column;
+margin:10px auto;
+border: 2px solid gray;
+border-radius: 10px;
+background: #f2f2f2;
+color: black;
+padding: 15px;
+justify-content: space-around;
+
+}
+.Smallstyle{
+  justify-content: center;
+  align-items: center;
+display: flex;
+flex-direction: column;
+}
+
+.serchbarinput{
+  display: block;
+  width: 80%;
+  margin:20px auto  auto auto;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.serchbutton {
+margin-top: 10px;
+}
+
+.Garylybox{
+display: flex;
+overflow-x: scroll;
+padding:10px 0px 10px 0px ;
+width: 100%;
+}
+.imagebox{
+
+  object-fit: contain;
+  padding: 10px;
+
+}
+.imagebox img {
+  height: 400px !important;
+  width: 400px !important;
 }

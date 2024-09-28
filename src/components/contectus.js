@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Particle";
-import Logo from "../../Assets/logo.png"
+import Particle from "./Particle"
+import Logo from "../Assets/logo.png"
 
 function Contect() {
   const [width, setWidth] = useState(1200);

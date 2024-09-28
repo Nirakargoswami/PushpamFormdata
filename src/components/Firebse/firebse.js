@@ -22,12 +22,10 @@ import {
   addDoc,
   getDoc,
   updateDoc,
-  getStorage,
   doc,
-  getDownloadURL,
-  uploadBytes
 
 } from "firebase/firestore";
+import { getStorage, ref, uploadBytes,getDownloadURL } from 'firebase/storage';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -46,13 +44,14 @@ const firebaseConfig = {
 };
 
 
-const storage = getStorage(app);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
 const HandleImageUpdload = async (file1) => {
+  console.log(file1)
   const storageRef = ref(storage, `images/${file1.name}`);
   await uploadBytes(storageRef, file1);
   const downloadURL = await getDownloadURL(storageRef);
@@ -85,26 +84,15 @@ function generateUniqueUserID(name) {
   return id;
 }
 const Creatuser = async ( formDatas) => {
-
+console.log(formDatas)
   const formData = formDatas.userdata
 
-  console.log(formData, formData)
-  console.log(formData.name)
-  if (formData.name) {
-    console.log(formData.name)
-    const Id = generateUniqueUserID(formData.name)
-    console.log(Id,formData)
+  if (formDatas.key) {
 
      await addDoc(collection(db, formDatas.key), {
       formType:formDatas.key,
-      id: Id,
-
       user_data:formDatas,
-    
-      phoneNumber
-        : formData.phoneNumber
-        ,
-
+      Username:formDatas.Forminfo["First Name"],
     })
 
 return true
@@ -113,14 +101,14 @@ return true
 
 }
 
-async function searchUserByPhoneNumber(phoneNumber) {
-  console.log(phoneNumber)
+async function searchUserByPhoneNumber(username,catogary) {
+  console.log(username,catogary)
 
   try {
     // Reference to the collection where documents are stored
     const collectionRef = collection(db, "sanatry");
     // Create a query against the collection
-    const q = query(collectionRef, where("phoneNumber", "==", phoneNumber));
+    const q = query(collectionRef, where("Username", "==", `${username}`));
     // Execute the query and get the documents
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
@@ -128,10 +116,12 @@ async function searchUserByPhoneNumber(phoneNumber) {
       return null;
     }
     // Iterate through the documents and log the data
+    const documents = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
+      JSON.stringify(doc)
+      documents.push({ id: doc.id, ...doc.data() });
     });
-
+    return documents;
   } catch (e) {
     console.error("Error searching documents: ", e);
   }
@@ -735,10 +725,11 @@ export {
   sendPasswordReset,
   Signout,
   Savedata,
-  searchUserByPhoneNumber,  
   // Distrubutrcoin,
   // Getrankdata,
+  storage,
   onAuthStateChanged,
+  searchUserByPhoneNumber,
   HandleImageUpdload,
   Getallscore,
   Creatuser
