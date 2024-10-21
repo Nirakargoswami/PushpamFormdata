@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "./Particle"
-import Logo from "../Assets/logo.png"
+import Logo from "../Assets/LOGO2.png"
 
 function Contect() {
   const [width, setWidth] = useState(1200);
@@ -12,11 +12,13 @@ function Contect() {
   return (
     <Container fluid className="about-section">
       <Particle />
+      <Row>
+          <Col>
+            <img style={{height:"300px",width:"300px"}} src={Logo} />
+          </Col >
+        </Row>
       <Container>
-        <div>
-        <img src={Logo} style={{height:"15rem",width:"27rem"}} className="img-fluid " alt="brand" />
-
-        </div>
+       
         <Row style={{ justifyContent: "center", padding: "10px" }}>
 
           <Col

@@ -33,7 +33,7 @@ app.post('/payment', async (req, res) => {
     try {
         let order_id = await generateOrderId();
         var request = {
-            "order_amount": 1.00,
+            "order_amount": 250.00,
             "order_currency": "INR",
             "order_id": order_id,
             "customer_details": {

@@ -8,6 +8,7 @@ import ABoutpdf from "../../Assets/REPORT.pdf"
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
 import { Document, Page } from 'react-pdf';
+import logo from "../../Assets/LOGO2.png"
 
 function About() {
   const [width, setWidth] = useState(1200);
@@ -19,7 +20,14 @@ function About() {
     <Container fluid className="about-section">
       <Particle />
       <Container>
+        <Row>
+          <Col>
+            <img style={{height:"300px",width:"300px"}} src={logo} />
+          </Col >
+        </Row>
+
         <Row style={{ justifyContent: "center", padding: "10px" }}>
+
           <Col
 
             style={{
@@ -50,7 +58,7 @@ function About() {
 
           <Row className="resume">
             <Document file={ABoutpdf} className="d-flex flex-column align-items-center">
-              {[1,2].map(page => (
+              {[1, 2].map(page => (
                 <Page key={page} pageNumber={page} scale={width > 786 ? 1.7 : 0.6} />
               ))}
             </Document>

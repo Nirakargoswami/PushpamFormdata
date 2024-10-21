@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
+import logo from "../../Assets/LOGO2.png"
 
 import { useState } from "react";
 import { Formdetali } from "../../Constant/constan"
@@ -10,6 +11,11 @@ function Projects() {
   return (
     <Container fluid className="project-section">
       <Particle />
+      <Row>
+          <Col>
+            <img style={{height:"300px",width:"300px"}} src={logo} />
+          </Col >
+        </Row>
       <Container>
         <h1 className="project-heading">
           Ongoing  <strong className="purple">Projects </strong>

@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 
 import ABoutpdf from "../../Assets/REPORT.pdf"
+import logo from "../../Assets/LOGO2.png"
 
 import { Document, Page } from 'react-pdf';
 
@@ -16,6 +17,11 @@ function Concet() {
         <Container fluid className="about-section">
             <Particle />
             <Container>
+            <Row>
+          <Col>
+            <img style={{height:"300px",width:"300px"}} src={logo} />
+          </Col >
+        </Row>
                 <Row style={{ justifyContent: "center", padding: "10px" }}>
                     <Col
 
