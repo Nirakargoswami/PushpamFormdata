@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
+import REFUND from "./components/Refund/Refund"
 import Resume from "./components/Resume/ResumeNew";
 import Form from "./components/Form/form"
 import Signup from "./components/Autentication/Signup";
@@ -13,6 +14,7 @@ import Tempalte from "./components/Template/Templates"
 import Contect from "./components/contectus"
 import Consent from "./components/Concent/Conecent"
 import Serchfrom from "./components/SercehBar/serchbar"
+import TermsOfService from "./components/Teremuse"
 import {
   BrowserRouter as Router,
   Route,
@@ -60,6 +62,9 @@ function App() {
           {/* <Route path="/resume" element={<Resume />} /> */}
           <Route path="/template" element={<Tempalte />} />
           <Route path="/form" element={<Form />} />
+          <Route path="/termsOfService" element={<TermsOfService />} />
+          <Route path="/Refund" element={<REFUND />} />
+
           {/* <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} /> */}
 
