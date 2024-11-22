@@ -63,7 +63,7 @@ function NavBar() {
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+            {/* <Nav.Item>
               <Nav.Link
                 as={Link}
                 to="/Consent"
@@ -74,6 +74,53 @@ function NavBar() {
                 />{" "}
                 Concent
               </Nav.Link>
+            </Nav.Item> */}
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/Refund"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Refund
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/termsOfService"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Termas adn conditions
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/PrivacyPolicy"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Privacy Policy              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/PrivacyPolicy"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Refund return 
+                </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link
@@ -89,7 +136,7 @@ function NavBar() {
             </Nav.Item>
             <Nav.Item>
 
-            
+
 
               <Nav.Link
                 as={Link}

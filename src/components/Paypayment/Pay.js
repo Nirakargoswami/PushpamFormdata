@@ -1,96 +1,96 @@
-import { useState } from 'react'
-import axios from "axios"
-import { load } from '@cashfreepayments/cashfree-js'
+// import { useState } from 'react'
+// import axios from "axios"
+// import { load } from '@cashfreepayments/cashfree-js'
 
 
-function Paynow() {
-  const [orderId, setOrderId] = useState("")
+// function Paynow() {
+//   const [orderId, setOrderId] = useState("")
 
-  let cashfree;
-  var initializeSDK = async function () {
-    cashfree = await load({
-      mode: "production"
-    });
-  };
-  initializeSDK();
-
-
+//   let cashfree;
+//   var initializeSDK = async function () {
+//     cashfree = await load({
+//       mode: "production"
+//     });
+//   };
+//   initializeSDK();
 
 
 
-  const getSessionId = async () => {
-    try {
-      let res = await axios.get("http://localhost:8000/payment")
-
-      if (res.data && res.data.payment_session_id) {
-
-        console.log(res.data)
-        setOrderId(res.data.order_id)
-        return res.data.payment_session_id
-      }
 
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+//   const getSessionId = async () => {
+//     try {
+//       let res = await axios.get("http://localhost:8000/payment")
 
-  const verifyPayment = async () => {
-    try {
+//       if (res.data && res.data.payment_session_id) {
 
-      let res = await axios.post("http://localhost:8000/verify", {
-        orderId: orderId
-      })
+//         console.log(res.data)
+//         setOrderId(res.data.order_id)
+//         return res.data.payment_session_id
+//       }
 
-      if (res && res.data) {
-        alert("payment verified")
-      }
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
 
-  const handleClick = async (e) => {
-    e.preventDefault()
-    try {
+//   const verifyPayment = async () => {
+//     try {
 
-      let sessionId = await getSessionId()
+//       let res = await axios.post("http://localhost:8000/verify", {
+//         orderId: orderId
+//       })
+
+//       if (res && res.data) {
+//         alert("payment verified")
+//       }
+
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+
+//   const handleClick = async (e) => {
+//     e.preventDefault()
+//     try {
+
+//       let sessionId = await getSessionId()
       
-      let checkoutOptions = {
-        paymentSessionId: sessionId,
-        redirectTarget: document.getElementById("cf_checkout"),
-        appearance: {
-            width: "425px",
-            height: "700px",
-        },
-    };
+//       let checkoutOptions = {
+//         paymentSessionId: sessionId,
+//         redirectTarget: document.getElementById("cf_checkout"),
+//         appearance: {
+//             width: "425px",
+//             height: "700px",
+//         },
+//     };
 
-      cashfree.checkout(checkoutOptions).then((res) => {
-        console.log("payment initialized")
+//       cashfree.checkout(checkoutOptions).then((res) => {
+//         console.log("payment initialized")
 
-        verifyPayment()
-      })
+//         verifyPayment()
+//       })
 
 
-    } catch (error) {
-      console.log(error)
-    }
+//     } catch (error) {
+//       console.log(error)
+//     }
 
-  }
-  return (
-    <>
+//   }
+//   return (
+//     <>
 
-      <h1>Cashfree payment getway</h1>
-      <div className="card">
-        <button onClick={handleClick}>
-          Pay now
-        </button>
+//       <h1>Cashfree payment getway</h1>
+//       <div className="card">
+//         <button onClick={handleClick}>
+//           Pay now
+//         </button>
 
-      </div>
+//       </div>
 
-    </>
-  )
-}
+//     </>
+//   )
+// }
 
-export default Paynow
+// export default Paynow

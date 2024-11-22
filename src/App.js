@@ -54,7 +54,7 @@ function App() {
           
           <Route path="/" element={<Home />} />
           <Route path="/contect" element={< Contect/>} />
-          <Route path="/Consent" element={< Consent/>} />
+          <Route path="/PrivacyPolicy" element={< Consent/>} />
           <Route path="/serch" element={< Serchfrom/>} />
 
           <Route path="/Project" element={<Projects />} />

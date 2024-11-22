@@ -12,40 +12,24 @@ const Imagegallry = () => {
     return (
         <>
             <div style={{width:"100%"}}>
-
                 <div className="Garylybox">
-
                     <div className="imagebox">
                         <img src={IMAGE1} style={{width:"100%",height:"100%"}} />
-
-
                     </div>
                     <div className="imagebox">
                         <img src={IMAGE5} style={{width:"100%",height:"100%"}} />
-
-
                     </div>
                     <div className="imagebox">
                         <img src={IMAGE4} style={{width:"100%",height:"100%"}} />
-
-
                     </div>
                     <div className="imagebox">
                         <img src={IMAGE3} style={{width:"100%",height:"100%"}} />
-
-
                     </div>
                     <div className="imagebox">
                         <img src={IMAGE2} style={{width:"100%",height:"100%"}} />
-
-
                     </div>
-                
-
-
                 </div>
             </div>
-
         </>
     )
 }

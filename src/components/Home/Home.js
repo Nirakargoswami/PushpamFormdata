@@ -23,7 +23,7 @@ function Home() {
     console.log("click")
   }
   return (
-    <section>
+    <section style={{marginTop:"100px"}}>
       <Container fluid className="home-section" id="home">
 
 
@@ -53,7 +53,7 @@ function Home() {
 
             </Col >
 
-            <h4 style={{ color: "black", textAlign: "center",marginTop: "20px", fontWeight: "500" }}>
+            <h4 style={{ color: "black", textAlign: "center", marginTop: "20px", fontWeight: "500" }}>
               Empowering women and Skill of men is the cornerstone of building resilient families, cohesive communities, and thriving nations
             </h4>
           </Row>
@@ -63,19 +63,19 @@ function Home() {
       </Container>
       {/* <Home2 /> */}
       {/* <Form /> */}
-     
+
       {/* <Paynow /> */}
       <div className="porjTitle">
         <h2 style={{ color: "#623686", textAlign: "center", fontWeight: "500" }}>
           Projects Galarry
         </h2>
       </div>
-      <div style={{marginBottom:"40px"}}>
+      <div style={{ marginBottom: "40px" }}>
         <Imagegallry />
       </div>
       <div className="porjTitle">
-        <h2 style={{ color: "#623686", textAlign:  "center", fontWeight: "500" }}>
-          Projects 
+        <h2 style={{ color: "#623686", textAlign: "center", fontWeight: "500" }}>
+          Projects
         </h2>
       </div>
       <div className="cardbox banner">
@@ -112,7 +112,12 @@ function Home() {
                   style={{ padding: "0px" }}
                 // onClick={() => updateExpanded(false)}
                 >
-                  <a class="btn btn-primary" style={{}}> Apply Now</a>
+                  <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+                    <a class="btn btn-primary" style={{}}> Apply Now</a>
+                    <a class="btn btn-primary mt-2" style={{}}> 250 :RS</a>
+                  </div>
+
+
                 </Nav.Link>
 
               </div>

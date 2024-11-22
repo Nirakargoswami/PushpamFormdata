@@ -1,48 +1,72 @@
 import React from "react";
 
+const RefundAndCancellationPolicy = () => {
+  return (
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      <h1>Refund and Cancellation Policy</h1>
+      <p>
+        This refund and cancellation policy outlines how you can cancel or seek
+        a refund for a product/service that you have purchased through the
+        Platform.
+      </p>
+      <h2>Cancellation Policy</h2>
+      <p>
+        <strong>1. Cancellation Requests:</strong> <br />
+        - Cancellations will only be considered if the request is made within 2
+        days of placing the order. <br />
+        - Cancellation requests may not be entertained if the orders have been
+        communicated to the sellers/merchant(s) listed on the Platform, and
+        they have initiated the process of shipping them, or if the product is
+        out for delivery. <br />
+        - In such cases, you may choose to reject the product at the doorstep.
+      </p>
+      <p>
+        <strong>2. Exceptions:</strong> <br />
+        - Nirakar Giri does not accept cancellation requests for perishable
+        items like flowers, eatables, etc. <br />
+        - However, a refund/replacement can be processed if the user
+        establishes that the quality of the product delivered is not
+        satisfactory.
+      </p>
 
-const REFUND = () => {
-    return (
-        <div>
-            <h1>
-                Cancellation & Refund Policy
-            </h1>
-            <div>
-                <h2>
-                    Last updated on 11-11-2024 10:38:25
-                </h2>
+      <h2>Refund Policy</h2>
+      <p>
+        <strong>1. Damaged or Defective Items:</strong> <br />
+        - If you receive a damaged or defective product, please report it to
+        our customer service team within 2 days of receiving the product. <br />
+        - The request will be entertained only after the seller/merchant listed
+        on the Platform checks and confirms the issue.
+      </p>
+      <p>
+        <strong>2. Product Not as Expected:</strong> <br />
+        - If you feel that the product received is not as shown on the site or
+        as per your expectations, notify our customer service team within 2
+        days of receiving the product. <br />
+        - The customer service team will review your complaint and make an
+        appropriate decision.
+      </p>
+      <p>
+        <strong>3. Products with Manufacturer Warranty:</strong> <br />
+        - For complaints regarding products that come with a warranty from the
+        manufacturer, please refer the issue directly to the manufacturer.
+      </p>
 
-            </div>
-            <div>
-                NIRAKARGIRI NARENDRAGIRI GOSVAMI believes in helping its customers as far as possible, and
-                has therefore a liberal cancellation policy. Under this policy:
-            </div>
-            <p>
-                • Cancellations will be considered only if the request is made immediately after placing the order.
-                However, the cancellation request may not be entertained if the orders have been communicated to the
-                vendors/merchants and they have initiated the process of shipping them.
-            </p>
-            <p>
-                • NIRAKARGIRI NARENDRAGIRI GOSVAMI does not accept cancellation requests for perishable
-                items like flowers, eatables etc. However, refund/replacement can be made if the customer establishes
-                that the quality of product delivered is not good
-            </p>
-            <p>
-                In case of receipt of damaged or defective items please report the same to our Customer Service team.
-                The request will, however, be entertained once the merchant has checked and determined the same at his
-                own end. This should be reported within 7 Days days of receipt of the products. In case you feel that the
-                product received is not as shown on the site or as per your expectations, you must bring it to the notice of
-                our customer service within 7 Days days of receiving the product. The Customer Service Team after
-                looking into your complaint will take an appropriate decision.
-            </p>
-            <p>
-                In case of complaints regarding products that come with a warranty from manufacturers, please refer
-                the issue to them. In case of any Refunds approved by the NIRAKARGIRI NARENDRAGIRI
-                GOSVAMI, it’ll take 1-2 Days days for the refund to be processed to the end customer.
-            </p>
-        </div>
+      <h2>General Terms</h2>
+      <p>
+        Refunds, cancellations, and returns will be processed as per the
+        guidelines provided above and are subject to the verification of the
+        reported issues. We reserve the right to accept or reject refund or
+        cancellation requests based on the circumstances and evidence provided.
+      </p>
 
-    )
-}
+      <h2>Contact Us</h2>
+      <p>
+        If you have further questions or need assistance, please contact our
+        customer service team. We’re here to help resolve your concerns as
+        quickly as possible.
+      </p>
+    </div>
+  );
+};
 
-export default REFUND
+export default RefundAndCancellationPolicy;
